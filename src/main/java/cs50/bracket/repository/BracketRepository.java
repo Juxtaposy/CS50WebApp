@@ -3,9 +3,7 @@ package cs50.bracket.repository;
 import cs50.bracket.domain.Bracket;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Repository
 public class BracketRepository {
@@ -32,5 +30,13 @@ public class BracketRepository {
 
     public Optional<Bracket> findById(Long id){
         return Optional.ofNullable(map.get(id));
+    }
+
+    public List<Bracket> findAll() {
+        return new ArrayList<>(map.values());
+    }
+
+    public void deleteById(Long id){
+        map.remove(id);
     }
 }

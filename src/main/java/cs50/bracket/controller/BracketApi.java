@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/brackets")
 public class BracketApi {
@@ -35,5 +37,23 @@ public class BracketApi {
     public ResponseEntity<BracketResponse> update(@RequestBody BracketUpdateRequest updateBracketRequest){
         BracketResponse bracketResponse = bracketService.update(updateBracketRequest);
         return ResponseEntity.status(HttpStatus.OK).body(bracketResponse);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<BracketResponse> update(@PathVariable Long id, @RequestBody BracketUpdateRequest updateBracketRequest){
+        BracketResponse bracketResponse = bracketService.updateById(id, updateBracketRequest);
+        return ResponseEntity.status(HttpStatus.OK).body(bracketResponse);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<BracketResponse>> findAll() {
+        List<BracketResponse> bracketResponses = bracketService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(bracketResponses);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        bracketService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
