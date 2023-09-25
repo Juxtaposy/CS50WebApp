@@ -3,7 +3,7 @@ package cs50.bracket.domain;
 public class Bracket {
 
     private Long id;
-    private final String name;
+    private String name;
 
     public Bracket(String name){
         this.name = name;
@@ -20,4 +20,7 @@ public class Bracket {
     public String getName(){
         return name;
     }
+
+    public void setName(String name) {this.name = name;}
+
 }

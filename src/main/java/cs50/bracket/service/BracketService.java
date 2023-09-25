@@ -1,6 +1,7 @@
 package cs50.bracket.service;
 
 import cs50.bracket.controller.request.BracketRequest;
+import cs50.bracket.controller.request.BracketUpdateRequest;
 import cs50.bracket.controller.response.BracketResponse;
 import cs50.bracket.domain.Bracket;
 import cs50.bracket.exception.BracketExceptionSupplier;
@@ -27,5 +28,14 @@ public class BracketService {
     public BracketResponse find(Long id) {
         Bracket bracket = bracketRepository.findById(id).orElseThrow(BracketExceptionSupplier.bracketNotFound(id));
         return bracketMapper.toBracketResponse(bracket);
+    }
+
+    public BracketResponse update(BracketUpdateRequest bracketUpdateRequest) {
+        Bracket bracket = bracketRepository.findById(bracketUpdateRequest.getId())
+                .orElseThrow(BracketExceptionSupplier.bracketNotFound(bracketUpdateRequest.getId()));
+
+        bracketRepository.save(bracketMapper.toBracket(bracket, bracketUpdateRequest));
+        return bracketMapper.toBracketResponse(bracket);
+
     }
 }

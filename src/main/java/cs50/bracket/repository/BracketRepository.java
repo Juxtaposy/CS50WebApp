@@ -14,14 +14,19 @@ public class BracketRepository {
     protected long counter = 1;
 
     public Bracket save(Bracket entity){
-        setId(entity);
+        setData(entity);
         return entity;
     }
 
-    private Bracket setId(Bracket entity){
-        entity.setId(counter);
-        map.put(counter, entity);
-        counter++;
+    private Bracket setData(Bracket entity){
+        if(entity.getId() != null){
+            map.put(entity.getId(), entity);
+        }
+        else {
+            entity.setId(counter);
+            map.put(counter, entity);
+            counter++;
+        }
         return entity;
     }
 

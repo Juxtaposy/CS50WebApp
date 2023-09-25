@@ -2,6 +2,7 @@ package cs50.bracket.controller;
 
 
 import cs50.bracket.controller.request.BracketRequest;
+import cs50.bracket.controller.request.BracketUpdateRequest;
 import cs50.bracket.controller.response.BracketResponse;
 import cs50.bracket.service.BracketService;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,12 @@ public class BracketApi {
     @GetMapping("/{id}")
     public ResponseEntity<BracketResponse> find(@PathVariable Long id){
         BracketResponse bracketResponse = bracketService.find(id);
+        return ResponseEntity.status(HttpStatus.OK).body(bracketResponse);
+    }
+
+    @PutMapping
+    public ResponseEntity<BracketResponse> update(@RequestBody BracketUpdateRequest updateBracketRequest){
+        BracketResponse bracketResponse = bracketService.update(updateBracketRequest);
         return ResponseEntity.status(HttpStatus.OK).body(bracketResponse);
     }
 }
