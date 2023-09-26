@@ -1,8 +1,5 @@
 package cs50.bracket.controller.response;
 
-
-
-
 public class BracketResponse {
 
     private final Long id;
