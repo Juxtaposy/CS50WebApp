@@ -20,4 +20,12 @@ public class UserExceptionAdvisor {
         LOG.error(exception.getMessage(), exception);
         return new ErrorMessageResponse(exception.getLocalizedMessage());
     }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ResponseBody
+    public ErrorMessageResponse userAlreadyExists(UserAlreadyExistsException exception){
+        LOG.error(exception.getMessage(), exception);
+        return new ErrorMessageResponse(exception.getLocalizedMessage());
+    }
 }
