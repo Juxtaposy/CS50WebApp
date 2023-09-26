@@ -1,11 +1,9 @@
 package cs50.bracket.service;
 
-import cs50.bracket.controller.request.BracketRequest;
 import cs50.bracket.controller.request.UserRequest;
-import cs50.bracket.controller.response.BracketResponse;
 import cs50.bracket.controller.response.UserResponse;
-import cs50.bracket.domain.Bracket;
 import cs50.bracket.domain.User;
+import cs50.bracket.exception.UserPasswordsDoNotMatchException;
 import cs50.bracket.mapper.UserMapper;
 import cs50.bracket.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -22,7 +20,12 @@ public class UserService {
     }
 
     public UserResponse create(UserRequest userRequest){
-        User user = userRepository.save(userMapper.toUser(userRequest));
-        return userMapper.toUserResponse(user);
+        if (userRequest.checkPassword()){
+            User user = userRepository.save(userMapper.toUser(userRequest));
+            return userMapper.toUserResponse(user);
+        }
+        else {
+            throw new UserPasswordsDoNotMatchException();
+        }
     }
 }

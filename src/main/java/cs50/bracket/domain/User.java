@@ -30,8 +30,8 @@ public class User {
 
     public String getLogin() { return login;}
 
-    public boolean checkPassword(String inputPassword) {
-        return inputPassword.equals(this.password);
+    public boolean checkPassword(String confirmPassword) {
+        return confirmPassword.equals(this.password);
     }
 
     public String getPassword() { return password; }
