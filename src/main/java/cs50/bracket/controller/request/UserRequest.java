@@ -18,4 +18,5 @@ public class UserRequest {
         return inputPassword.equals(this.password);
     }
 
+    public String getPassword() { return password; }
 }
