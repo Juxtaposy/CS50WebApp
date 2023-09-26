@@ -34,5 +34,6 @@ public class User {
         return inputPassword.equals(this.password);
     }
 
+    public String getPassword() { return password; }
     public Long getId() { return id; }
 }
