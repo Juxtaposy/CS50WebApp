@@ -2,18 +2,20 @@ package cs50.bracket.controller.request;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
-public class UserRequest {
+public class UserRegister {
 
     private final String login;
     private final String password;
     private final String confirmPassword;
 
     @JsonCreator
-    public UserRequest(String login, String password, String confirmPassword){
+    public UserRegister(String login, String password, String confirmPassword){
         this.login = login;
         this.password = password;
         this.confirmPassword = confirmPassword;
     }
+
+
 
     public String getLogin() { return login; }
     public boolean checkPassword() {
