@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/brackets")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BracketApi {
 
     private final BracketService bracketService;
