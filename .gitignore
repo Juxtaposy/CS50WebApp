@@ -1,4 +1,5 @@
-HELP.md
+
+backend/HELP.md
 backend/target/
 backend/!.mvn/wrapper/maven-wrapper.jar
 backend/!**/src/main/**/target/
@@ -14,6 +15,7 @@ backend/.springBeans
 backend/.sts4-cache
 
 ### IntelliJ IDEA ###
+.idea
 backend/.idea
 backend/*.iws
 backend/*.iml
